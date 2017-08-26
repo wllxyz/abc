@@ -14,27 +14,13 @@
 #include <ostream>
 #include <assert.h>
 #include <algorithm>
+#include "Exception.h"
 
-struct Exception
+class DivZeroException : public Exception
 {
-	std::string message;
-	Exception() { message = "Unknow Exception"; }
+public:
+	DivZeroException():Exception("DivZeroException"){}
 };
-
-inline std::ostream& operator<< (std::ostream& o, const Exception& e)
-{
-	return o<<e.message;
-}
-
-struct DivZeroException : public Exception
-{
-	DivZeroException() { message = "Exception : Dived by Zero"; }
-};
-
-inline std::ostream& operator<< (std::ostream& o, const DivZeroException& e)
-{
-	return o<<e.message;
-}
 
 struct ValueType
 {
